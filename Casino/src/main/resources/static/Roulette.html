@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <title>Kasíno Ruleta</title>
+    <link rel="stylesheet" href="CSS/ruleta.css">
+</head>
+<body>
+    <div class="roulette-container">
+        <div class="roulette-wheel">
+            <canvas id="wheel" width="500" height="500"></canvas>
+            <div class="pointer"></div>
+        </div>
+
+        <div class="controls">
+            <h2>Stávka na ruletu</h2>
+
+            <input type="number" id="betAmount" placeholder="Stávka (napr. 10 €)" min="1"><br>
+
+            <label><input type="radio" name="betType" value="RED" checked> Červená</label>
+            <label><input type="radio" name="betType" value="BLACK"> Čierna</label>
+            <label><input type="radio" name="betType" value="NUMBER"> Konkrétne číslo</label>
+
+            <input type="number" id="chosenNumber" placeholder="Číslo 0–36" min="0" max="36"><br>
+
+            <button id="spinBtn">🎯 Roztočiť koleso</button>
+
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script src="JS/Roulette.js"></script>
+</body>
+</html>

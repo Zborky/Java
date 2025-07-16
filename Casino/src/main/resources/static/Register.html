@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8" />
+    <title>Registrácia - Kasino</title>
+    <!-- Ak máš favicon.ico, použij tento riadok, inak ho vynechaj -->
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1c1c1c;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #2a2a2a;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 0 10px #000;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #e63946;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #toLoginBtn {
+            background: #457b9d;
+            margin-top: 10px;
+        }
+        #message {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Registrácia</h2>
+    <form id="registerForm">
+        <input type="text" id="username" placeholder="Používateľské meno" required />
+        <input type="password" id="password" placeholder="Heslo" required />
+        <button type="submit">Registrovať</button>
+        <button type="button" id="toLoginBtn">Prihlásiť sa</button>
+    </form>
+    <div id="message"></div>
+</div>
+
+<script src="JS/Register.js"></script>
+<script>
+    document.getElementById('toLoginBtn').addEventListener('click', () => {
+        window.location.href = 'login.html';
+    });
+</script>
+</body>
+</html>
