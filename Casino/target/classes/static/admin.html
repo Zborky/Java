@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="CSS/Admin.css">
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+
+    <h2>Users</h2>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Balance</th>
+            <th>Change Balance</th>
+        </tr>
+        </thead>
+        <tbody id="userTable"></tbody>
+    </table>
+
+    <h2>Game Statistics</h2>
+    <p id="loadingGameStats" style="display:none;">Loading game stats...</p>
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Game Name</th>
+            <th>Total Games Played</th>
+            <th>Total Player Wins (€)</th>
+            <th>Casino Profit (€)</th>
+            <th>Last Played</th>
+        </tr>
+        </thead>
+        <tbody id="gameStatsTable"></tbody>
+    </table>
+
+    <script src="JS/Admin.js"></script>
+</body>
+</html>
