@@ -19,6 +19,6 @@ public class AdminPageController {
     public String adminPage(Model model) {
         model.addAttribute("users", userRepository.findAll());
         model.addAttribute("gameStats",adminGameStatsService.getAllGameStats());
-        return "admin";  // admin.html použije atribút "users"
+        return "admin";  // admin.html users variable Users
     }
 }
