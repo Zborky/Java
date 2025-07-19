@@ -23,7 +23,7 @@ public UserDetails loadUserByUsername(String username) throws UsernameNotFoundEx
     User user = userRepository.findByUsername(username)
         .orElseThrow(() -> new UsernameNotFoundException("User not found"));
 
-    // Vytvorenie autorít (rolí) so správnym prefixom "ROLE_"
+    // Make Roles with prefix ROLE_
     List<SimpleGrantedAuthority> authorities = List.of(
         new SimpleGrantedAuthority("ROLE_" + user.getRole())
     );
