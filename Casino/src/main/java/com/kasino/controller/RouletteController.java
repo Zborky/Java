@@ -23,7 +23,7 @@ public class RouletteController {
 
     @PostMapping("/start")
     public RouletteResultDto startGame(@RequestBody RouletteRequestDto request, Principal principal) {
-        String username = principal.getName(); // zistí meno prihláseného používateľa
+        String username = principal.getName(); // Fing name to login User
         return rouletteService.startGame(username, request);
     }
 }
