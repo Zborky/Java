@@ -17,7 +17,7 @@ public class KasinoApplication {
 	@Bean
 	public CommandLineRunner makeMeAdmin(UserRepository userRepository) {
 		return args -> {
-			String mojeMeno = "JakubZboron"; // ← sem daj svoje meno
+			String mojeMeno = "JakubZboron"; // Insert here your Admin name
 			userRepository.findByUsername(mojeMeno).ifPresent(user -> {
 				user.setRole("ADMIN");
 				userRepository.save(user);
