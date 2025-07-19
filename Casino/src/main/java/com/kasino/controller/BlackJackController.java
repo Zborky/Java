@@ -24,7 +24,7 @@ public class BlackJackController {
 
     @PostMapping("/start")
     public BlackJackResultDto startGame(@RequestBody BlackJackRequestDto request, Principal principal) {
-        String username = principal.getName(); // získa aktuálne prihláseného používateľa
+        String username = principal.getName(); // Get actual Logged user
         return blackJackService.startGame(username, request);
     }
 
