@@ -22,7 +22,7 @@ public class SlotMachineController {
 
     @PostMapping("/play")
     public ResponseEntity<SpinResultDto> play(@RequestBody SpinRequestDto request, Principal principal) {
-        String username = principal.getName(); // získanie mena aktuálne prihláseného používateľa
+        String username = principal.getName(); // Find name to actual logged user
         SpinResultDto result = slotMachineService.spin(username, request);
         return ResponseEntity.ok(result);
     }
