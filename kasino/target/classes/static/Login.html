@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8" />
+    <title>Prihlásenie do Kasína</title>
+    <link rel="stylesheet" href="css/Login.css">
+    <link rel="icon" href="/favicon.ico"/>  
+    
+</head>
+<body>
+    <div class="login-container">
+        <h2>Prihlásenie do Kasína</h2>
+        <form method="post" action="/login">
+            <label for="username">Používateľské meno</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Heslo</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Prihlásiť sa</button>
+        </form>
+
+        <div class="error" id="error-message"></div>
+
+        <div class="register-link">
+            <p>Nemáte účet? <a href="/register.html">Zaregistrujte sa</a></p>
+        </div>
+    </div>
+
+    <script src="js/Login.js"></script>
+</body>
+</html>
