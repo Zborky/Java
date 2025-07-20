@@ -1,0 +1,128 @@
+body {
+  font-family: sans-serif;
+  background-color: #0b3d0b;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  font-size: 3rem;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin: 20px auto;
+  max-width: 800px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: gold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #ffd700;
+}
+
+input[type="number"] {
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 100px;
+  max-width: 100%;
+  text-align: center;
+  margin: 10px auto;
+  display: inline-block;
+}
+
+.result {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  min-height: 1.5em;
+}
+
+/* ======= Responsive view ======= */
+@media (max-width: 1024px) {
+  .cards {
+    font-size: 2.5rem;
+  }
+
+  .section {
+    padding: 15px;
+  }
+
+  button {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+
+  input[type="number"] {
+    font-size: 0.95rem;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cards {
+    font-size: 2rem;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  button {
+    width: 100%;
+    max-width: 300px;
+    display: block;
+    margin: 10px auto;
+  }
+
+  input[type="number"] {
+    width: 100%;
+    max-width: 150px;
+    display: block;
+    margin: 10px auto;
+  }
+
+  .result {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards {
+    font-size: 1.5rem;
+    gap: 5px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 14px;
+  }
+
+  input[type="number"] {
+    font-size: 0.9rem;
+  }
+
+  .result {
+    font-size: 0.95rem;
+  }
+}
