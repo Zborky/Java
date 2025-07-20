@@ -39,7 +39,7 @@ public class RouletteController {
         return rouletteService.startGame(username, request);
 
     } catch (Exception e) {
-        // Tu vypíšeme chybu do logu a do výsledku
+        // Here we write Error from log
         e.printStackTrace();
         result.setMessage("Internal server error: " + e.getMessage());
         result.setGameOver(true);
