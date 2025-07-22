@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dice Game 🎲</title>
+  <link rel="stylesheet" href="CSS/Dice.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🎲 Hra Kocky</h1>
+
+    <label for="bet">Stavka (€):</label>
+    <input type="number" id="bet" placeholder="Zadaj výšku stávky" />
+
+    <button id="playButton">Hrať</button>
+
+    <div id="result" class="result hidden">
+      <h2>Výsledok</h2>
+      <p><strong>Kocka 1:</strong> <span id="dice1"></span></p>
+      <p><strong>Kocka 2:</strong> <span id="dice2"></span></p>
+      <p><strong>Súčet:</strong> <span id="total"></span></p>
+      <p><strong>Správa:</strong> <span id="message"></span></p>
+      <p><strong>Nový zostatok:</strong> <span id="balance"></span> €</p>
+    </div>
+  </div>
+
+  <script src="js/Dice.js"></script>
+</body>
+</html>
