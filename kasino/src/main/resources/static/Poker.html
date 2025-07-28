@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Texas Hold'em Poker</title>
+  <link rel="stylesheet" href="css/Poker.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Texas Hold'em Poker</h1>
+
+    <div class="cards-section">
+      <div class="hand">
+        <h2>Hráč</h2>
+        <div id="playerCards" class="cards"></div>
+        <p id="playerRank"></p>
+      </div>
+
+      <div class="hand">
+        <h2>Bot</h2>
+        <div id="botCards" class="cards"></div>
+        <p id="botRank"></p>
+      </div>
+
+      <div class="community">
+        <h2>Spoločné karty</h2>
+        <div id="communityCards" class="cards"></div>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="btnCall" onclick="playerAction('call')" disabled>Call</button>
+      <button id="btnCheck" onclick="playerAction('check')" disabled>Check</button>
+      <button id="btnFold" onclick="playerAction('fold')" disabled>Fold</button>
+      <button id="btnRaise" onclick="onRaiseClicked()" disabled>Raise</button>
+      <input type="number" id="raiseAmount" placeholder="Raise amount" min="1" disabled />
+    </div>
+
+    <button id="btnStart" onclick="startGame()">Začať hru</button>
+
+    <div id="result" class="result"></div>
+
+    <div id="potAmount">Pot: 0 chips</div>
+  </div>
+
+  <script src="js/Poker.js"></script>
+</body>
+</html>
