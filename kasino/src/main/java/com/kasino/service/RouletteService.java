@@ -106,7 +106,7 @@ public class RouletteService {
 
         userRepository.save(user);
         double casinoProfit = betAmount - amountWon;
-        adminGameStatsService.updateStatsAfterGame("Roulette", amountWon, casinoProfit);
+        //adminGameStatsService.updateStatsAfterGame("Roulette", amountWon, casinoProfit);
         // Generate unique game ID and store empty game state (for possible future use)
         String gameId = UUID.randomUUID().toString();
         GameState state = new GameState();
