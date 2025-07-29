@@ -16,12 +16,12 @@ public class UserService {
     private final PasswordEncoder passwordEncoder;
 
     public void register(RegisterRequest request) {
-        // Skontrolujeme, či užívateľ s týmto menom existuje
+        // Check if user is exist
         if (userRepository.existsByUsername(request.getUsername())) {
             throw new RuntimeException("Username already taken");
         }
 
-        // Vytvoríme nového používateľa
+        // Create new user
         User user = new User();
         user.setUsername(request.getUsername());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
@@ -29,7 +29,7 @@ public class UserService {
         try {
             userRepository.save(user);
         } catch (Exception e) {
-            // Loguj chybu, prípadne ju môžeš poslať do nejakého loggera
+            // Catch error 
             System.err.println("Chyba pri ukladaní používateľa: " + e.getMessage());
             throw new RuntimeException("Chyba pri registrácii používateľa");
         }
