@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: chatapp-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: chatapp
+      MYSQL_USER: chatapp_user
+      MYSQL_PASSWORD: chatapp_pass
+    ports:
+      - "3306:3306"
+    volumes:
+      - chatapp_data:/var/lib/mysql
+
+volumes:
+  chatapp_data:
