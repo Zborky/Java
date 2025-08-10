@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8" />
+    <title>Prihlásenie do Admin panelu</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="icon" href="/favicon.ico"/>  
+    
+</head>
+<body>
+    <div class="login-container">
+        <h2>Prihlásenie do Admin Panelu</h2>
+        <form method="post" action="/login">
+            <label for="username">Používateľské meno</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Heslo</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Prihlásiť sa</button>
+        </form>
+
+        <div class="error" id="error-message"></div>
+
+        
+    </div>
+
+    <script src="js/Login.js"></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/navbar.css">
+</head>
+
+<header>
+    <h1>MyEshop</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Products.html">Products</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+  <h1>Admin panel</h1>
+
+  <h2 id="formTitle">Pridať nový produkt</h2>
+  <form id="productForm">
+    <input type="hidden" name="id"> 
+    
+    <label>Názov:
+      <input type="text" name="name" required>
+    </label><br><br>
+
+    <label>Popis:
+      <textarea name="description" required></textarea>
+    </label><br><br>
+
+    <label>Cena:
+      <input type="number" step="0.01" name="price" required>
+    </label><br><br>
+
+    <label>Kategória:
+      <select name="category" required>
+        <option value="">-- Vyber kategóriu --</option>
+        <option value="T-Shirt">T-Shirt</option>
+        <option value="Pants">Pants</option>
+        <option value="Hoodie">Hoodie</option>
+        <option value="Hračky">Hračky</option>
+        <option value="Knihy">Knihy</option>
+        <option value="Iné">Iné</option>
+      </select>
+    </label><br><br>
+
+    <label>Obrázok:
+      <input type="file" name="image" accept="image/*">
+    </label><br><br>
+
+    <button type="submit">Odoslať</button>
+  </form>
+
+  <div id="responseMessage"></div>
+
+  <h2>Všetky produkty</h2>
+  <table id="productTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Názov</th>
+        <th>Popis</th>
+        <th>Cena</th>
+        <th>Kategória</th>
+        <th>Obrázok</th>
+        <th>Akcie</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Produkty sa sem dynamicky načítajú -->
+    </tbody>
+  </table>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

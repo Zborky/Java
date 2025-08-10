@@ -1,0 +1,124 @@
+/* --- Import moderného písma z Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+/* --- Základné nastavenia a reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f2f5; /* Jemná sivá farba pozadia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #333;
+}
+
+/* --- Kontajner pre prihlasovací formulár --- */
+.login-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Jemný tieň pre "card" efekt */
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* --- Nadpis --- */
+.login-container h2 {
+    margin-bottom: 25px;
+    color: #1c1e21;
+    font-weight: 600;
+}
+
+/* --- Formulárové prvky --- */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: #606770;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #dddfe2;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* --- Efekt pri kliknutí na input (focus) --- */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #5c67f2; /* Fialová farba na zvýraznenie */
+    box-shadow: 0 0 0 3px rgba(92, 103, 242, 0.2);
+}
+
+/* --- Tlačidlo --- */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #5c67f2; /* Moderná fialová farba */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+/* --- Efekt pri prejdení myšou po tlačidle (hover) --- */
+button[type="submit"]:hover {
+    background-color: #4a54c2; /* Tmavší odtieň fialovej */
+}
+
+/* --- Odkaz na registráciu --- */
+.register-link {
+    margin-top: 25px;
+    font-size: 0.9rem;
+}
+
+.register-link a {
+    color: #5c67f2;
+    text-decoration: none;
+    font-weight: 500;
+    transition: text-decoration 0.3s ease;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Chybová správa (ak by bola potrebná) --- */
+.error {
+    color: #dc3545;
+    margin-top: 15px;
+    font-size: 0.9rem;
+    min-height: 20px; /* Aby kontajner neodskakoval pri zobrazení chyby */
+}
+
+/* --- Responzivita pre mobilné zariadenia --- */
+@media (max-width: 480px) {
+    .login-container {
+        padding: 25px;
+        margin: 15px;
+    }
+}
