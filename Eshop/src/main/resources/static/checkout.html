@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokladňa – MyEshop</title>
+  <link rel="stylesheet" href="css/home.css"/>
+  <link rel="stylesheet" href="css/cart.css">
+  <style>
+    .checkout { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; padding: 1rem 0; }
+    @media (max-width: 920px){ .checkout { grid-template-columns: 1fr; } }
+    .card { border: 1px solid #eee; border-radius: .75rem; padding: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px){ .form-row { grid-template-columns: 1fr; } }
+    .field { display: grid; gap:.35rem; margin-bottom: .85rem; }
+    .field input, .field select, .field textarea { padding: .6rem .7rem; border: 1px solid #ddd; border-radius: .5rem; width: 100%; }
+    .summary-items { display: grid; gap: .75rem; max-height: 420px; overflow: auto; margin-bottom: .75rem; }
+    .summary-item { display: grid; grid-template-columns: 64px 1fr auto; gap: .75rem; align-items: center; }
+    .summary-line { display:flex; justify-content:space-between; margin-top: .25rem; }
+    .summary-total { font-weight: 700; font-size: 1.05rem; }
+    .btn-primary { width: 100%; padding: .9rem 1rem; background:#111; color:#fff; border:none; border-radius:.6rem; cursor:pointer; }
+    .btn-primary:disabled{ opacity:.6; cursor:not-allowed; }
+    .muted { color:#666; font-size:.9rem; }
+    .error { color:#b00020; margin:.5rem 0; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Pokladňa</h1>
+    <nav style="margin-left:auto">
+      <a href="index.html">Domov</a>
+    </nav>
+    <button id="cart-button" class="cart-button" aria-label="Otvoriť košík">
+      🛒 <span id="cart-count" class="badge">0</span>
+    </button>
+  </header>
+
+  <!-- Overlay + Side cart (používame ten istý, nech funguje aj tu) -->
+  <div id="cart-overlay" class="cart-overlay" hidden></div>
+  <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+    <header class="cart-header">
+      <h3>Košík</h3>
+      <button id="cart-close" class="icon-btn" aria-label="Zavrieť">✕</button>
+    </header>
+    <div id="cart-items" class="cart-items"></div>
+    <footer class="cart-footer">
+      <div class="cart-total">
+        <span>Spolu:</span>
+        <strong id="cart-total">0,00 €</strong>
+      </div>
+      <button class="checkout-btn" id="checkout-btn" disabled>Pokračovať k pokladni</button>
+    </footer>
+  </aside>
+
+  <main class="checkout">
+    <!-- Formulár -->
+    <section class="card">
+      <h2>Údaje zákazníka</h2>
+
+      <form id="order-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="firstName">Meno*</label>
+            <input id="firstName" name="firstName" required autocomplete="given-name" />
+          </div>
+          <div class="field">
+            <label for="lastName">Priezvisko*</label>
+            <input id="lastName" name="lastName" required autocomplete="family-name" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">E-mail*</label>
+            <input id="email" name="email" type="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="phone">Telefón*</label>
+            <input id="phone" name="phone" type="tel" required autocomplete="tel" />
+          </div>
+        </div>
+
+        <h3>Doručenie</h3>
+        <div class="field">
+          <label for="country">Krajina*</label>
+          <select id="country" name="country" required>
+            <option value="SK" selected>Slovensko</option>
+            <option value="CZ">Česko</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="field">
+            <label for="city">Mesto*</label>
+            <input id="city" name="city" required autocomplete="address-level2" />
+          </div>
+          <div class="field">
+            <label for="zip">PSČ*</label>
+            <input id="zip" name="zip" required autocomplete="postal-code" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="street">Ulica a číslo*</label>
+          <input id="street" name="street" required autocomplete="street-address" />
+        </div>
+
+        <div class="field">
+          <label for="shippingMethod">Spôsob doručenia*</label>
+          <select id="shippingMethod" name="shippingMethod" required>
+            <option value="COURIER">Kuriér (4.90 €)</option>
+            <option value="PICKUP">Osobný odber (0.00 €)</option>
+          </select>
+          <div class="muted">Doručenie do 24–48 hodín.</div>
+        </div>
+
+        <h3>Platba</h3>
+        <div class="field">
+          <label for="paymentMethod">Spôsob platby*</label>
+          <select id="paymentMethod" name="paymentMethod" required>
+            <option value="CARD">Karta online</option>
+            <option value="COD">Dobierka</option>
+            <option value="BANK">Bankový prevod</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="note">Poznámka k objednávke</label>
+          <textarea id="note" name="note" rows="3" placeholder="Nepovinné"></textarea>
+        </div>
+
+        <div class="field">
+          <label>
+            <input id="terms" type="checkbox" required />
+            Súhlasím s obchodnými podmienkami a spracovaním osobných údajov.*
+          </label>
+        </div>
+
+        <div id="form-error" class="error" hidden></div>
+        <button id="place-order" class="btn-primary" type="submit">Odoslať objednávku</button>
+        <div class="muted">Polia označené * sú povinné.</div>
+      </form>
+    </section>
+
+    <!-- Súhrn -->
+    <aside class="card">
+      <h2>Súhrn objednávky</h2>
+      <div id="summary-items" class="summary-items"><!-- dynamicky --></div>
+
+      <div class="summary-line">
+        <span>Medzisúčet</span>
+        <strong id="summary-subtotal">0,00 €</strong>
+      </div>
+      <div class="summary-line">
+        <span>Doprava</span>
+        <strong id="summary-shipping">0,00 €</strong>
+      </div>
+      <div class="summary-line summary-total">
+        <span>Spolu</span>
+        <strong id="summary-total">0,00 €</strong>
+      </div>
+
+      <p class="muted">Ceny sú vrátane DPH.</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 MyEshop</p>
+  </footer>
+
+  <script src="js/cart.js"></script>
+  <script src="js/checkout.js"></script>
+</body>
+</html>
