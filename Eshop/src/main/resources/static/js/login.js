@@ -5,12 +5,13 @@ window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
 
     if (params.has('error')) {
-        errorMessageDiv.innerText = 'Nesprávne prihlasovacie údaje.';
+        errorMessageDiv.innerText = 'Bad login data..';
         errorMessageDiv.style.color = 'red';
     } else if (params.has('logout')) {
-        errorMessageDiv.innerText = 'Úspešne ste sa odhlásili.';
+        errorMessageDiv.innerText = 'Succesfull login.';
         errorMessageDiv.style.color = 'green';
     } else {
         errorMessageDiv.innerText = '';
     }
+
 });
