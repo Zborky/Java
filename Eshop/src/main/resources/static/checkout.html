@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="sk">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokladňa – MyEshop</title>
+  <title>Checkout – MyEshop</title>
   <link rel="stylesheet" href="css/home.css"/>
   <link rel="stylesheet" href="css/cart.css">
   <style>
@@ -26,139 +26,136 @@
 </head>
 <body>
   <header class="site-header">
-    <h1>Pokladňa</h1>
+    <h1>Checkout</h1>
     <nav style="margin-left:auto">
-      <a href="index.html">Domov</a>
+      <a href="index.html">Home</a>
     </nav>
-    <button id="cart-button" class="cart-button" aria-label="Otvoriť košík">
+    <button id="cart-button" class="cart-button" aria-label="Open cart">
       🛒 <span id="cart-count" class="badge">0</span>
     </button>
   </header>
 
-  <!-- Overlay + Side cart (používame ten istý, nech funguje aj tu) -->
   <div id="cart-overlay" class="cart-overlay" hidden></div>
   <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
     <header class="cart-header">
-      <h3>Košík</h3>
-      <button id="cart-close" class="icon-btn" aria-label="Zavrieť">✕</button>
+      <h3>Cart</h3>
+      <button id="cart-close" class="icon-btn" aria-label="Close">✕</button>
     </header>
     <div id="cart-items" class="cart-items"></div>
     <footer class="cart-footer">
       <div class="cart-total">
-        <span>Spolu:</span>
-        <strong id="cart-total">0,00 €</strong>
+        <span>Total:</span>
+        <strong id="cart-total">€0.00</strong>
       </div>
-      <button class="checkout-btn" id="checkout-btn" disabled>Pokračovať k pokladni</button>
+      <button class="checkout-btn" id="checkout-btn" disabled>Proceed to Checkout</button>
     </footer>
   </aside>
 
   <main class="checkout">
-    <!-- Formulár -->
     <section class="card">
-      <h2>Údaje zákazníka</h2>
+      <h2>Customer Details</h2>
 
       <form id="order-form" novalidate>
         <div class="form-row">
           <div class="field">
-            <label for="firstName">Meno*</label>
+            <label for="firstName">First Name*</label>
             <input id="firstName" name="firstName" required autocomplete="given-name" />
           </div>
           <div class="field">
-            <label for="lastName">Priezvisko*</label>
+            <label for="lastName">Last Name*</label>
             <input id="lastName" name="lastName" required autocomplete="family-name" />
           </div>
         </div>
 
         <div class="form-row">
           <div class="field">
-            <label for="email">E-mail*</label>
+            <label for="email">Email*</label>
             <input id="email" name="email" type="email" required autocomplete="email" />
           </div>
           <div class="field">
-            <label for="phone">Telefón*</label>
+            <label for="phone">Phone*</label>
             <input id="phone" name="phone" type="tel" required autocomplete="tel" />
           </div>
         </div>
 
-        <h3>Doručenie</h3>
+        <h3>Delivery</h3>
         <div class="field">
-          <label for="country">Krajina*</label>
+          <label for="country">Country*</label>
           <select id="country" name="country" required>
-            <option value="SK" selected>Slovensko</option>
-            <option value="CZ">Česko</option>
+            <option value="SK" selected>Slovakia</option>
+            <option value="CZ">Czech Republic</option>
           </select>
         </div>
         <div class="form-row">
           <div class="field">
-            <label for="city">Mesto*</label>
+            <label for="city">City*</label>
             <input id="city" name="city" required autocomplete="address-level2" />
           </div>
           <div class="field">
-            <label for="zip">PSČ*</label>
+            <label for="zip">ZIP Code*</label>
             <input id="zip" name="zip" required autocomplete="postal-code" />
           </div>
         </div>
         <div class="field">
-          <label for="street">Ulica a číslo*</label>
+          <label for="street">Street Address*</label>
           <input id="street" name="street" required autocomplete="street-address" />
         </div>
 
         <div class="field">
-          <label for="shippingMethod">Spôsob doručenia*</label>
+          <label for="shippingMethod">Delivery Method*</label>
           <select id="shippingMethod" name="shippingMethod" required>
-            <option value="COURIER">Kuriér (4.90 €)</option>
-            <option value="PICKUP">Osobný odber (0.00 €)</option>
+            <option value="COURIER">Courier (€4.90)</option>
+            <option value="PICKUP">Pickup (€0.00)</option>
           </select>
-          <div class="muted">Doručenie do 24–48 hodín.</div>
+          <div class="muted">Delivery within 24–48 hours.</div>
         </div>
 
-        <h3>Platba</h3>
+        <h3>Payment</h3>
         <div class="field">
-          <label for="paymentMethod">Spôsob platby*</label>
+          <label for="paymentMethod">Payment Method*</label>
           <select id="paymentMethod" name="paymentMethod" required>
-            <option value="CARD">Karta online</option>
-            <option value="COD">Dobierka</option>
-            <option value="BANK">Bankový prevod</option>
+            <option value="CARD">Card Payment</option>
+            <option value="COD">Cash on Delivery</option>
+            <option value="BANK">Bank Transfer</option>
           </select>
         </div>
 
         <div class="field">
-          <label for="note">Poznámka k objednávke</label>
-          <textarea id="note" name="note" rows="3" placeholder="Nepovinné"></textarea>
+          <label for="note">Order Note</label>
+          <textarea id="note" name="note" rows="3" placeholder="Optional"></textarea>
         </div>
 
         <div class="field">
           <label>
             <input id="terms" type="checkbox" required />
-            Súhlasím s obchodnými podmienkami a spracovaním osobných údajov.*
+            I agree to the terms and conditions and the processing of personal data.*
           </label>
         </div>
 
         <div id="form-error" class="error" hidden></div>
-        <button id="place-order" class="btn-primary" type="submit">Odoslať objednávku</button>
-        <div class="muted">Polia označené * sú povinné.</div>
+        <button id="place-order" class="btn-primary" type="submit">Place Order</button>
+        <div class="muted">Fields marked with * are required.</div>
       </form>
     </section>
 
-    <!-- Súhrn -->
     <aside class="card">
-      <h2>Súhrn objednávky</h2>
-      <div id="summary-items" class="summary-items"><!-- dynamicky --></div>
+      <h2>Order Summary</h2>
+      <div id="summary-items" class="summary-items"></div>
 
       <div class="summary-line">
-        <span>Medzisúčet</span>
-        <strong id="summary-subtotal">0,00 €</strong>
+        <span>Subtotal</span>
+        <strong id="summary-subtotal">€0.00</strong>
       </div>
       <div class="summary-line">
-        <span>Doprava</span>
-        <strong id="summary-shipping">0,00 €</strong>
+        <span>Shipping</span>
+        <strong id="summary-shipping">€0.00</strong>
       </div>
       <div class="summary-line summary-total">
-        <span>Spolu</span>
-        <strong id="summary-total">0,00 €</strong>
+        <span>Total</span>
+        <strong id="summary-total">€0.00</strong>
       </div>
 
-      <p class="muted">Ceny sú vrátane DPH.</p>
+      <p class="muted">Prices include VAT.</p>
     </aside>
   </main>
 
